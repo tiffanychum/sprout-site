@@ -127,7 +127,7 @@
     }
     /* sizes */
     .phone-lg  { width: 275px; height: 562px; }
-    .phone-md  { width: 215px; height: 440px; }
+    .phone-md  { width: 255px; height: 521px; }
     .phone-sm  { width: 180px; height: 368px; }
 
     /* ══════════════ HERO ══════════════ */
@@ -333,15 +333,17 @@
     .price-head { text-align: center; margin-bottom: 44px; }
     .price-head p { max-width: 440px; margin: 10px auto 0; }
     .price-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 16px; max-width: 680px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; max-width: 900px; margin: 0 auto;
     }
     .price-card {
-      border-radius: var(--radius-xl); padding: 34px 28px;
+      border-radius: var(--radius-xl); padding: 32px 26px;
       border: 1px solid var(--mint-200);
+      display: flex; flex-direction: column;   /* key for button alignment */
     }
-    .price-card.free { background: var(--mint-50); }
-    .price-card.pro  {
+    .price-card.free    { background: var(--mint-50); }
+    .price-card.monthly { background: #fff; border-color: var(--mint-300); }
+    .price-card.annual  {
       background: var(--forest); color: #fff; border-color: transparent;
       box-shadow: 0 16px 48px rgba(30,77,56,0.22);
     }
@@ -349,30 +351,47 @@
       display: inline-block; background: var(--mint-400); color: var(--forest);
       font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
       text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 14px;
+      align-self: flex-start;
     }
-    .price-name  { font-size: 1.35rem; font-weight: 800; margin-bottom: 5px; }
-    .price-free .price-name { color: var(--forest); }
-    .price-amt   { font-size: 2.1rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 5px; }
-    .price-card.free .price-amt { color: var(--sage-600); }
-    .price-card.pro  .price-amt { color: #fff; }
-    .price-amt span  { font-size: 0.9rem; font-weight: 400; opacity: 0.6; }
+    .price-name  { font-size: 1.25rem; font-weight: 800; margin-bottom: 5px; }
+    .price-card.free    .price-name { color: var(--forest); }
+    .price-card.monthly .price-name { color: var(--forest); }
+    .price-card.annual  .price-name { color: #fff; }
+    .price-amt   { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 2px; }
+    .price-card.free    .price-amt { color: var(--sage-600); }
+    .price-card.monthly .price-amt { color: var(--forest); }
+    .price-card.annual  .price-amt { color: #fff; }
+    .price-amt span  { font-size: 0.88rem; font-weight: 400; opacity: 0.6; }
+    .price-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 2px; min-height: 1.2em; }
+    .price-card.annual .price-sub { color: rgba(255,255,255,0.6); }
+    .price-save {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      background: rgba(126,200,164,0.22); color: var(--mint-400);
+      border-radius: 12px; padding: 2px 8px; margin-bottom: 2px;
+    }
+    .price-card.annual .price-save { background: rgba(255,255,255,0.15); color: #9be3b8; }
     .price-div  { height: 1px; background: var(--mint-200); margin: 18px 0; }
-    .price-card.pro .price-div { background: rgba(255,255,255,0.15); }
-    .price-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .price-list li { display: flex; gap: 9px; font-size: 0.87rem; align-items: flex-start; line-height: 1.5; }
-    .price-card.free .price-list li { color: var(--muted); }
-    .price-card.pro  .price-list li { color: rgba(255,255,255,0.78); }
-    .ck { color: var(--mint-400); flex-shrink: 0; margin-top: 1px; }
-    .price-card.pro .ck { color: #9be3b8; }
+    .price-card.annual .price-div { background: rgba(255,255,255,0.15); }
+    .price-list { list-style: none; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+    .price-list li { display: flex; gap: 9px; font-size: 0.86rem; align-items: flex-start; line-height: 1.5; }
+    .price-card.free    .price-list li { color: var(--muted); }
+    .price-card.monthly .price-list li { color: var(--muted); }
+    .price-card.annual  .price-list li { color: rgba(255,255,255,0.78); }
+    .ck { flex-shrink: 0; margin-top: 1px; }
+    .price-card.free    .ck { color: var(--mint-500); }
+    .price-card.monthly .ck { color: var(--mint-500); }
+    .price-card.annual  .ck { color: #9be3b8; }
     .price-btn {
-      display: block; text-align: center; margin-top: 26px;
+      display: block; text-align: center; margin-top: 24px;
       padding: 12px; border-radius: 50px;
       font-weight: 700; font-size: 0.88rem; transition: all 0.18s;
     }
-    .price-card.free .price-btn { background: var(--forest); color: #fff; }
-    .price-card.free .price-btn:hover { background: var(--sage-600); }
-    .price-card.pro  .price-btn { background: var(--mint-400); color: var(--forest); }
-    .price-card.pro  .price-btn:hover { background: #9be3b8; transform: translateY(-1px); }
+    .price-card.free    .price-btn { background: var(--forest); color: #fff; }
+    .price-card.free    .price-btn:hover { background: var(--sage-600); }
+    .price-card.monthly .price-btn { background: var(--forest); color: #fff; }
+    .price-card.monthly .price-btn:hover { background: var(--sage-600); }
+    .price-card.annual  .price-btn { background: var(--mint-400); color: var(--forest); }
+    .price-card.annual  .price-btn:hover { background: #9be3b8; transform: translateY(-1px); }
 
     /* ══════════════ SUPPORT ══════════════ */
     #support { background: var(--mint-100); }
@@ -618,9 +637,12 @@
     <p>Everything you need to begin. Upgrade when your garden grows.</p>
   </div>
   <div class="price-grid">
+
+    <!-- Free -->
     <div class="price-card free">
-      <div class="price-name price-free">Free</div>
+      <div class="price-name">Free</div>
       <div class="price-amt">$0 <span>forever</span></div>
+      <div class="price-sub">&nbsp;</div>
       <div class="price-div"></div>
       <ul class="price-list">
         <li><span class="ck">✓</span> Daily Bloom every morning</li>
@@ -631,10 +653,12 @@
       </ul>
       <a href="https://apps.apple.com/app/sprout" class="price-btn">Get Started Free</a>
     </div>
-    <div class="price-card pro">
-      <div class="price-badge">Most Popular</div>
-      <div class="price-name">Sprout Pro</div>
-      <div class="price-amt">$2.99 <span>/ month</span></div>
+
+    <!-- Monthly Pro -->
+    <div class="price-card monthly">
+      <div class="price-name">Pro Monthly</div>
+      <div class="price-amt">$4.99 <span>/ month</span></div>
+      <div class="price-sub">Billed monthly</div>
       <div class="price-div"></div>
       <ul class="price-list">
         <li><span class="ck">✓</span> Unlimited plants</li>
@@ -643,8 +667,27 @@
         <li><span class="ck">✓</span> All features, no limits</li>
         <li><span class="ck">✓</span> Priority support</li>
       </ul>
-      <a href="https://apps.apple.com/app/sprout" class="price-btn">Try Pro Free</a>
+      <a href="https://apps.apple.com/app/sprout" class="price-btn">Start Free Trial</a>
     </div>
+
+    <!-- Annual Pro — Best Value -->
+    <div class="price-card annual">
+      <div class="price-badge">Best Value</div>
+      <div class="price-name">Pro Annual</div>
+      <div class="price-amt">$29.99 <span>/ year</span></div>
+      <div class="price-sub">$2.50 / month equivalent</div>
+      <div class="price-save">Save 50% vs monthly</div>
+      <div class="price-div"></div>
+      <ul class="price-list">
+        <li><span class="ck">✓</span> Unlimited plants</li>
+        <li><span class="ck">✓</span> Unlimited AI diagnoses</li>
+        <li><span class="ck">✓</span> Full growth timeline</li>
+        <li><span class="ck">✓</span> All features, no limits</li>
+        <li><span class="ck">✓</span> Priority support</li>
+      </ul>
+      <a href="https://apps.apple.com/app/sprout" class="price-btn">Start Free Trial</a>
+    </div>
+
   </div>
 </section>
 
